@@ -1,0 +1,117 @@
+<div *ngIf="walletAct" class="alert alert-danger" role="alert">
+    User Wallet update !!!
+</div>
+
+<form #moany_trasfer="ngForm" class="p-3">
+    <h4 class="text-danger p-3"><i class="fa fa-university" aria-hidden="true"></i> Money <span class="text-dark">Transfer</span></h4>
+    
+    <div class="row">
+        <div class="form-group col-6">
+            <label for="data">Date -</label>
+            <input type="date" ngModel name="LiveTime" disabled placeholder="Enter Date" class="form-control my-1">
+        </div>
+        <div class="form-group col-6">
+            <label for="data">Time -</label>
+            <input type="time" ngModel name="LiveTime" disabled placeholder="Enter Date" class="form-control my-1">
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-6">
+            <label for="data"> Name -</label>
+            <input type="text" ngModel name="Name" disabled placeholder="Enter Name" class="form-control my-1">
+        </div>
+        <div class="form-group col-6">
+            <label for="data">Contact -</label>
+            <input type="text" ngModel name="Contact" disabled placeholder="Enter contact" class="form-control my-1">
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-6">
+            <label for="data">Email -</label>
+            <input type="text" ngModel name="Email" disabled placeholder="Enter Account Number" class="form-control my-1">
+        </div>
+        <div class="form-group col-6">
+            <label for="data">Reffer Code -</label>
+            <input type="text" ngModel name="Reffer_Code" disabled placeholder="Enter Account IFSC" class="form-control my-1">
+        </div>
+    </div>
+    <label for="data">Password -</label>
+    <input type="text" ngModel name="Password_Code" disabled placeholder="Enter Amount" class="form-control my-1">
+    <div class="row">
+        <div class="form-group col-6">
+            <label for="data">Old Account -</label>
+            <input type="text" ngModel name="Old_Account" disabled placeholder="Enter Account Number" class="form-control my-1">
+        </div>
+        <div class="form-group col-6">
+            <label for="data">Old Account IFSC -</label>
+            <input type="text" ngModel name="Old_Account_IFSC" disabled placeholder="Enter Account IFSC" class="form-control my-1">
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-6">
+            <label for="data">Account Number -</label>
+            <input type="text" ngModel name="Account_No" disabled placeholder="Enter Account Number" class="form-control my-1">
+        </div>
+        <div class="form-group col-6">
+            <label for="data">Account IFSC -</label>
+            <input type="text" ngModel name="Account_IFSC" disabled placeholder="Enter Account IFSC" class="form-control my-1">
+        </div>
+    </div>
+    <label for="data">Amount Withdrawal Request -</label>
+    <input type="text" ngModel name="Account_WithReq" disabled placeholder="Enter Amount" class="form-control my-1">
+    <label for="data">Amount Live -</label>
+    <input type="text" ngModel name="LiveWallet" disabled placeholder="Enter Live wallet" class="form-control my-1">
+    <!-- <input type="text" ngModel name="comment" placeholder="Enter comment" class="form-control my-1">  -->
+</form>
+<div class="px-3">
+    <input type="number" [(ngModel)]="WalletAmount" placeholder="Enter Wallet Value" class="form-control">
+    <button class="btn btn-danger my-3 w-100" (click)="moneyTrans()">Update Wallet</button>
+</div>
+
+
+<table class="table table-bordered m-auto mt-2 m-3" style="width: 90%;">
+    <thead>
+        <tr class="table-dark">
+            <th>Sr.</th>
+            <th>UID</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Name</th>
+            <th>Contact</th>
+            <th>Old Account</th>
+            <th>Old IFSC</th>
+            <th>Password</th>
+            <th>Reffer</th>
+            <th>Email</th>
+            <th class="text-center">Account Number</th>
+            <th class="text-center">Account IFSC</th>
+            <th class="text-center">Request Amount</th>
+            <th class="text-center">Live Wallet</th>
+            <!-- <th class="text-center">Comment</th> -->
+            <th class="text-center">Status</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let data of AddFund, index as i">
+        <tr>
+            <td>{{i+1}}</td>
+            <td>{{data.Uid | slice:0:8}}</td>
+            <td>{{data.LiveTime | date:'dd:MM:YYYY'}}</td>
+            <td>{{data.LiveTime | date:'hh:mm a' }}</td>
+            <td>{{data.Name}}</td>
+            <td>{{data.Contact}}</td>
+            <td>{{data.OldAccount}}</td>
+            <td>{{data.OldIFSC}}</td>
+            <td>{{data.Password}}</td>
+            <td>{{data.REfferCode}}</td>
+            <td>{{data.uemail}}</td>
+            <td class="text-center">{{data.Account_No}}</td>
+            <td class="text-center">{{data.Account_IFSC}}</td>
+            <td class="text-center">{{data.Account_WithReq}}</td>
+            <td class="text-center">{{data.LiveWallet}}</td>
+            <td class="text-center">
+                <a (click)="EditUSER(i)" class="text-primary"  ><i class="fa fa-edit" aria-hidden="true"></i></a> &nbsp;
+                <!-- <a (click)="delUSER(i)" class="text-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a> -->
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,87 @@
+<h5 style="padding-left: 140px; padding-top: 20px;"><span class="fw-bold text-danger "><i class="fa fa-cubes" aria-hidden="true"></i> Live</span> Gammer</h5>
+
+<table class="table border table-bordered m-auto" style="width: 90%;">
+    <thead class="bg-dark text-light">
+        <tr>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Name</th>
+            <th>Contact</th>
+            <th>Market</th>
+            <th>Chart</th>
+        </tr>
+    </thead>
+    <tbody class="text-center" *ngFor="let cell of dataview; index as i">
+        <tr>
+            <td>{{cell.liveTime | date:"dd-MM-yy"}}</td>
+            <td>{{cell.liveTime | date:'shortTime':'hh:mm:a'}}</td>
+            <td>{{cell.Name}}</td>
+            <td>{{cell.Contact}}</td>
+            <td>{{cell.marketValue}}</td>
+            <td><a (click)="viewChart(i)" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-search-plus text-danger" aria-hidden="true"></i></a></td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- POP_UP 1 -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+            <table class="table border table-bordered m-auto" style="width: 90%;">
+                <thead class="bg-dark text-light">
+                    <tr>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Name</th>
+                        <th>Contact</th>
+                        <th>Market</th>
+                        <th>Chart</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center" *ngFor="let cell of dataview; index as i">
+                    <tr>
+                        <td>{{cell.liveTime | date:"dd-MM-yy"}}</td>
+                        <td>{{cell.liveTime | date:'shortTime':'hh:mm:a'}}</td>
+                        <td>{{cell.Name}}</td>
+                        <td>{{cell.Contact}}</td>
+                        <td>{{cell.marketValue}}</td>
+                        <td><a (click)="viewChart(i)" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-search-plus text-danger" aria-hidden="true"></i></a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+<!-- POP UP 2 -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <table class="table border table-bordered text-center">
+                    <thead class="bg-dark text-light">
+                        <tr>
+                            <th>Sr.</th>
+                            <th>Game Type</th>
+                            <th>Number</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let data of tempArry;index as i">
+                        <tr>
+                            <td>{{i+1}}</td>
+                            <td>{{data.type}}</td>
+                            <td>{{data.num}}</td>
+                            <td>{{data.amount}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

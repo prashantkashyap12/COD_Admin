@@ -1,0 +1,45 @@
+<h5 class="py-1 px-4">
+  <span class="fw-bold text-danger "><i class="fa fa-user" aria-hidden="true"></i> User</span> profile List
+</h5>
+<table class="table table-bordered table-striped w-75 ">
+  <thead class="bg-dark text-light">
+    <tr>
+      <td colspan="12" class="text-center fw-bold">Live USER List</td>
+    </tr>
+    <tr>
+      <th>SR. No</th>
+      <th>USER_ID</th>
+      <th>First Name</th>
+      <th>Sur Name</th>
+      <th>Email Id</th>
+      <th>Mobile</th>
+      <th>Account Number</th>
+      <th>Account IFSC</th>
+      <th>Reffer Id</th>
+      <th>Password</th>
+      <th>Wallet Amount</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let data of userData; index as i">
+    <tr>
+      <td>{{ i + 1 }}</td>
+      <td>{{ data.uid | slice:0:8 }}</td>
+      <td>{{ data.firstName }}</td>
+      <td>{{data.post}}</td>
+      <td>{{ data.email}}</td>
+      <td>{{ data.phoneNumber }}</td>
+      <td>{{ data.address }}</td>
+      <td>{{data.paymentInfo}}</td>
+      <td class="text-danger fw-bold">{{ data.surName }}</td>
+      <td>{{ data.password }}</td>
+      <td>{{ data.walletAmount}}</td>
+      <td class="bg-secondory text-white text-center">
+        <!-- <a (click)="userEdit(data, i)"><i class="fa fa-pencil-square-o bg-success rounded p-1 btn-action"
+            aria-hidden="true"></i></a>&nbsp; -->
+        <!-- Working Good -->
+        <a (click)="userDel(data.uid)"><i class="fa fa-trash bg-danger rounded p-1 btn-action" aria-hidden="true"></i></a>
+      </td>
+    </tr>
+  </tbody>
+</table>
